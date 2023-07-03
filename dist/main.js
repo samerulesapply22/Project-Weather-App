@@ -10,13 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/displayWeather.js":
+/*!*******************************!*\
+  !*** ./src/displayWeather.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ displayWeather)\n/* harmony export */ });\nconst conditionTextDiv = document.getElementById('conditionText');\nconst cityDiv = document.getElementById('city');\nconst countryDiv = document.getElementById('country');\nconst temperatureDiv = document.getElementById('temperature');\nconst feelslikeDiv = document.getElementById('feelslike');\nconst windDiv = document.getElementById('wind');\nconst humidityDiv = document.getElementById('humidity');\n\n\nfunction displayWeather(\n  conditionText,\n  city,\n  country,\n  temperature,\n  feelslike,\n  wind,\n  humidity\n) {\n  conditionTextDiv.textContent = conditionText;\n  cityDiv.textContent = city;\n  countryDiv.textContent = country;\n  temperatureDiv.textContent = temperature;\n  feelslikeDiv.textContent = feelslike;\n  windDiv.textContent = wind;\n  humidityDiv.textContent = humidity;\n}\n\n\n//# sourceURL=webpack://project-weather-app/./src/displayWeather.js?");
+
+/***/ }),
+
 /***/ "./src/getWeather.js":
 /*!***************************!*\
   !*** ./src/getWeather.js ***!
   \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ getWeather)\n/* harmony export */ });\nasync function getWeather() {\n  const responce = await fetch(\n    'http://api.weatherapi.com/v1/current.json?key=de8a49aa5a1a4a91abb143538230107&q=London&aqi=no'\n  );\n  const weatherData = await responce.json();\n  console.log(weatherData.current.temp_c);\n}\n\n\n//# sourceURL=webpack://project-weather-app/./src/getWeather.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ getWeather)\n/* harmony export */ });\n/* harmony import */ var _displayWeather__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./displayWeather */ \"./src/displayWeather.js\");\n\n\nasync function getWeather() {\n  const place = document.getElementById('place').value;\n  const response = await fetch(\n    `http://api.weatherapi.com/v1/forecast.json?key=de8a49aa5a1a4a91abb143538230107&q=${place}`,\n    {\n      mode: 'cors',\n    }\n  );\n  if (response.status === 400) {\n    return 'bad request';\n  }\n  const weatherData = await response.json();\n  (0,_displayWeather__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\n    weatherData.current.condition.text,\n    weatherData.location.name,\n    weatherData.location.country,\n    weatherData.current.temp_c,\n    weatherData.current.feelslike_c,\n    weatherData.current.wind_kph,\n    weatherData.current.humidity\n  );\n}\n\n\n//# sourceURL=webpack://project-weather-app/./src/getWeather.js?");
 
 /***/ }),
 
@@ -26,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _getWeather__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getWeather */ \"./src/getWeather.js\");\n\n\n(0,_getWeather__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n\n\n//# sourceURL=webpack://project-weather-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _getWeather__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getWeather */ \"./src/getWeather.js\");\n\n\nconst search = document.getElementById('search');\n\nsearch.addEventListener('click', _getWeather__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\n\n//# sourceURL=webpack://project-weather-app/./src/index.js?");
 
 /***/ })
 

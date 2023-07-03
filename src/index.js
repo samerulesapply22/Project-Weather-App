@@ -1,3 +1,5 @@
-import getWeather from './getWeather';
+import getWeather from "./getWeather";
 
-getWeather();
+const search = document.getElementById('search');
+
+search.addEventListener('click', getWeather);
