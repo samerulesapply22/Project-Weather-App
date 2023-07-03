@@ -1,7 +1,6 @@
 import displayWeather from './displayWeather';
 
-export default async function getWeather() {
-  const place = document.getElementById('place').value;
+export default async function getWeather(place) {
   const response = await fetch(
     `http://api.weatherapi.com/v1/forecast.json?key=de8a49aa5a1a4a91abb143538230107&q=${place}`,
     {
@@ -19,6 +18,6 @@ export default async function getWeather() {
     weatherData.current.temp_c,
     weatherData.current.feelslike_c,
     weatherData.current.wind_kph,
-    weatherData.current.humidity
+    weatherData.current.humidity,
   );
 }

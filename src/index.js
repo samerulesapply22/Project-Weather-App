@@ -1,5 +1,14 @@
-import getWeather from "./getWeather";
+import getWeather from './getWeather';
 
+getWeather('Lisbon');
+const placeholder = document.getElementById('place');
 const search = document.getElementById('search');
 
-search.addEventListener('click', getWeather);
+placeholder.addEventListener('mousedown', () => {
+  placeholder.value = '';
+});
+
+search.addEventListener('click', () => {
+  const place = placeholder.value;
+  getWeather(place);
+});

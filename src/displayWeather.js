@@ -6,7 +6,6 @@ const feelslikeDiv = document.getElementById('feelslike');
 const windDiv = document.getElementById('wind');
 const humidityDiv = document.getElementById('humidity');
 
-
 export default function displayWeather(
   conditionText,
   city,
@@ -14,13 +13,13 @@ export default function displayWeather(
   temperature,
   feelslike,
   wind,
-  humidity
+  humidity,
 ) {
   conditionTextDiv.textContent = conditionText;
-  cityDiv.textContent = city;
+  cityDiv.textContent = city + ',';
   countryDiv.textContent = country;
   temperatureDiv.textContent = temperature;
-  feelslikeDiv.textContent = feelslike;
-  windDiv.textContent = wind;
-  humidityDiv.textContent = humidity;
+  feelslikeDiv.textContent = 'feels like: ' + feelslike;
+  windDiv.textContent = 'wind: ' + wind + 'kph';
+  humidityDiv.textContent = 'humidity: ' + humidity + '%';
 }
