@@ -1,6 +1,6 @@
 import getWeather from './getWeather';
 
-getWeather('Lisbon');
+getWeather('Lviv');
 const placeholder = document.getElementById('place');
 const search = document.getElementById('search');
 

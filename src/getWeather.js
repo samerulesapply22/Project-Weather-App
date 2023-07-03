@@ -1,4 +1,9 @@
 import displayWeather from './displayWeather';
+const dealer = document.getElementById('error');
+
+function dealwitherror() {
+  dealer.textContent = 'Cannot find the city';
+}
 
 export default async function getWeather(place) {
   const response = await fetch(
@@ -8,8 +13,10 @@ export default async function getWeather(place) {
     }
   );
   if (response.status === 400) {
-    return 'bad request';
-  }
+    dealwitherror();
+    return;
+  } 
+  dealer.textContent = '';
   const weatherData = await response.json();
   displayWeather(
     weatherData.current.condition.text,
@@ -18,6 +25,7 @@ export default async function getWeather(place) {
     weatherData.current.temp_c,
     weatherData.current.feelslike_c,
     weatherData.current.wind_kph,
-    weatherData.current.humidity,
+    weatherData.current.humidity
   );
+  
 }
