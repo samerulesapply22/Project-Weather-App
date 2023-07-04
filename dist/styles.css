@@ -95,12 +95,19 @@ body {
     margin-right: 0.3em;
 }
 
-#temperature::after, #feelslike::after {
+
+.convert:after {
     content:"\2103";
     font-size: 0.5em;
     position: relative;
     top: -0.8em;
 }
+
+.ff:after {
+    content:"\00B0 F";
+}
+
+
 
 #error {
     color: darkred;

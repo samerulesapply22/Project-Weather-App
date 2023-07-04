@@ -1,9 +1,4 @@
-import displayWeather from './displayWeather';
 const dealer = document.getElementById('error');
-
-function dealwitherror() {
-  dealer.textContent = 'Cannot find the city';
-}
 
 export default async function getWeather(place) {
   const response = await fetch(
@@ -13,19 +8,20 @@ export default async function getWeather(place) {
     }
   );
   if (response.status === 400) {
-    dealwitherror();
+    dealer.textContent = 'Cannot find the city';
     return;
-  } 
+  }
   dealer.textContent = '';
   const weatherData = await response.json();
-  displayWeather(
-    weatherData.current.condition.text,
-    weatherData.location.name,
-    weatherData.location.country,
-    weatherData.current.temp_c,
-    weatherData.current.feelslike_c,
-    weatherData.current.wind_kph,
-    weatherData.current.humidity
-  );
-  
+  const myWeatherData = {
+    conditionText: weatherData.current.condition.text,
+    city: weatherData.location.name,
+    country: weatherData.location.country,
+    temperature: weatherData.current.temp_c,
+    feelslike: weatherData.current.feelslike_c,
+    wind: weatherData.current.wind_kph,
+    humidity: weatherData.current.humidity,
+  };
+
+  return myWeatherData;
 }
