@@ -9,7 +9,6 @@ const humidityDiv = document.getElementById('humidity');
 
 export default async function displayWeather(place) {
   const myWeatherData = await getWeather(place);
-  console.log(myWeatherData);
 
   conditionTextDiv.textContent = myWeatherData.conditionText;
   locationDiv.textContent = myWeatherData.city + ', ' + myWeatherData.country;

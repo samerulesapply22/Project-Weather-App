@@ -1,7 +1,6 @@
-import displayWeather from "./displayWeather";
+import displayWeather from './displayWeather';
 
 displayWeather('Lviv');
-
 
 const placeholder = document.getElementById('place');
 const search = document.getElementById('search');
@@ -12,5 +11,5 @@ placeholder.addEventListener('mousedown', () => {
 
 search.addEventListener('click', () => {
   const place = placeholder.value;
-  displayWeather(place)
+  displayWeather(place);
 });

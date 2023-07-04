@@ -21,6 +21,8 @@ export default async function getWeather(place) {
     feelslike: weatherData.current.feelslike_c,
     wind: weatherData.current.wind_kph,
     humidity: weatherData.current.humidity,
+    temperatureF: weatherData.current.temp_f,
+    feelslikeF: weatherData.current.feelslike_f,
   };
 
   return myWeatherData;
